@@ -1,0 +1,43 @@
+body {
+  font-family: sans-serif;
+  text-align: center;
+  padding: 2rem;
+  background: #f0f0f0;
+}
+
+h1 {
+  color: #333;
+}
+
+#question {
+  font-size: 2rem;
+  margin: 1rem;
+}
+
+#choices button {
+  font-size: 1.5rem;
+  margin: 0.5rem;
+  padding: 1rem 2rem;
+}
+
+#result {
+  font-size: 1.2rem;
+  margin-top: 1rem;
+  min-height: 1.2rem;
+}
+
+#progress-container {
+  width: 100%;
+  height: 20px;
+  background-color: #ccc;
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 1rem 0;
+}
+
+#progress-bar {
+  height: 100%;
+  width: 100%;
+  background-color: #66bb6a;
+  transition: width 1s linear;
+}
