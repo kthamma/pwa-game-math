@@ -9,10 +9,7 @@ h1 {
   color: #333;
 }
 
-#question {
-  font-size: 2rem;
-  margin: 1rem;
-}
+
 
 #choices button {
   font-size: 1.5rem;
@@ -88,12 +85,7 @@ h1 {
 }
 
 
-#question {
-  font-size: 2.2rem;
-  font-weight: bold;
-  color: #1e88e5;
-  margin: 1.5rem 0;
-}
+
 
 #result {
   font-size: 1.6rem;
@@ -173,18 +165,7 @@ h1 {
 
 
 /* Stylize the question display */
-#question {
-  font-size: 2.4rem;
-  font-weight: bold;
-  color: #1565c0;
-  background-color: #e3f2fd;
-  padding: 1rem 1.5rem;
-  border-radius: 12px;
-  text-align: center;
-  margin: 1rem auto;
-  max-width: 90%;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-}
+
 
 /* Stylize the countdown timer */
 #timer {
@@ -306,4 +287,21 @@ display: flex;
 #choices button {
   white-space: normal;
   line-height: 1.2;
+}
+
+
+/* Restored question styling */
+#question {
+  display: block !important;
+  font-size: 2.4rem !important;
+  font-weight: bold !important;
+  color: #1565c0 !important;
+  background-color: #e3f2fd !important;
+  padding: 1rem 1.5rem !important;
+  border-radius: 12px !important;
+  text-align: center !important;
+  margin: 1rem auto !important;
+  max-width: 90% !important;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1) !important;
+  visibility: visible !important;
 }
