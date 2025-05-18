@@ -1,6 +1,3 @@
-const correctSound = new Audio('https://cdn.pixabay.com/download/audio/2022/03/15/audio_1b0a31c6d7.mp3');
-const wrongSound = new Audio('https://cdn.pixabay.com/download/audio/2022/03/15/audio_d5be23e57a.mp3');
-const timeupSound = new Audio('https://cdn.pixabay.com/download/audio/2022/03/15/audio_fcccbced5f.mp3');
 
 let timer;
 const TIME_LIMIT = 10;
@@ -69,7 +66,6 @@ function generateQuestion() {
       clearInterval(timer);
       disableChoiceButtons();
       const isCorrect = choice === correctAnswer;
-      if (isCorrect) correctSound.play(); else wrongSound.play();
       showCharacterMood(isCorrect ? 'correct' : 'wrong');
       document.getElementById('result').textContent = isCorrect
         ? 'ถูกต้อง!'
@@ -94,8 +90,7 @@ function startTimer() {
     if (timeLeft <= 0) {
       clearInterval(timer);
       disableChoiceButtons();
-      timeupSound.play();
-      showCharacterMood('wrong');
+            showCharacterMood('wrong');
       document.getElementById('result').textContent = `หมดเวลา! คำตอบคือ ${correctAnswer}`;
       updateScore(-1);
       document.getElementById('next').style.display = 'inline-block';
