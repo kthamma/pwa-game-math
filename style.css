@@ -45,13 +45,7 @@ h1 {
 
 /* Responsive button update */
 
-#choices {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 1rem;
-  margin: 1rem 0;
-}
+
 
 #choices button {
   font-size: 2rem;
@@ -136,14 +130,7 @@ h1 {
 }
 
 
-#choices {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 0.8rem;
-  margin: 1rem auto;
-  max-width: 90vw;
-}
+
 
 #choices button {
   font-size: 1.6rem;
@@ -216,6 +203,9 @@ h1 {
 
 /* Stylize the score display */
 #score {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-size: 2rem;
   font-weight: bold;
   color: #1b5e20;
@@ -259,4 +249,45 @@ h1 {
   color: #424242;
   text-align: center;
   margin: 0.5rem auto;
+}
+
+
+/* Force answer buttons into 2 rows x 3 columns */
+#choices {
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, auto);
+  gap: 1rem;
+  justify-items: center;
+  margin: 1rem auto;
+  max-width: 90vw;
+}
+#choices button {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+
+/* Header styling: character and score side by side */
+#header {
+  display: flex;
+  align-items: stretch;
+  gap: 1rem;
+  justify-content: center;  /* Center header content */
+  padding: 0.5rem 1rem;
+  margin: 0 auto;          /* Center header container */
+}
+
+/* Adjust character image container */
+#character {
+  margin: 0;
+}
+
+/* Adjust score styling in header */
+#score {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0.6rem 1.2rem;
 }

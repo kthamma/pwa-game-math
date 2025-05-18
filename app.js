@@ -74,6 +74,7 @@ function generateQuestion() {
       clearInterval(timer);
       disableChoiceButtons();
       const isCorrect = choice === correctAnswer;
+      if (isCorrect) correctSound.play(); else wrongSound.play();
       if (isCorrect) playSound(correctSound); else playSound(wrongSound);
       showCharacterMood(isCorrect ? 'correct' : 'wrong');
       const resultDiv = document.getElementById('result');
