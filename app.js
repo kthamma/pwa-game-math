@@ -37,11 +37,8 @@ function numberToThai(n) {
   return n.toString();
 }
 
-const correctSound = new Audio('https://cdn.pixabay.com/download/audio/2022/03/15/audio_1b0a31c6d7.mp3');
-const wrongSound = new Audio('https://cdn.pixabay.com/download/audio/2022/03/15/audio_d5be23e57a.mp3');
 let isMuted = false;
 
-const timeupSound = new Audio('https://cdn.pixabay.com/download/audio/2022/03/15/audio_fcccbced5f.mp3');
 
 let timer;
 const TIME_LIMIT = 15;  // เวลาใหม่ต่อข้อ 15 วินาที
@@ -124,8 +121,6 @@ function generateQuestion() {
       clearInterval(timer);
       disableChoiceButtons();
       const isCorrect = choice === correctAnswer;
-      if (isCorrect) correctSound.play(); else wrongSound.play();
-      if (isCorrect) playSound(correctSound); else playSound(wrongSound);
       showCharacterMood(isCorrect ? 'correct' : 'wrong');
       const resultDiv = document.getElementById('result');
       resultDiv.className = isCorrect ? 'correct' : 'wrong';
@@ -153,7 +148,6 @@ function startTimer() {
     if (timeLeft <= 0) {
       clearInterval(timer);
       disableChoiceButtons();
-      playSound(timeupSound);
       showCharacterMood('wrong');
       const resultDiv = document.getElementById('result');
       resultDiv.className = 'timeout';
@@ -235,6 +229,5 @@ function toggleMute() {
 
 function playSound(audio) {
   if (!isMuted) {
-    audio.play();
   }
 }
