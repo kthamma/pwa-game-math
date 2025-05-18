@@ -223,3 +223,12 @@ h1 {
   text-align: center;
   margin: 1rem auto 0.5rem auto;
 }
+
+
+#version {
+  font-size: 0.9rem;
+  text-align: center;
+  margin-top: 0.5rem;
+  color: #666;
+  font-style: italic;
+}
