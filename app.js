@@ -55,7 +55,7 @@ function generateQuestion() {
   resultDiv.textContent = '';
   resultDiv.className = '';
   showCharacterMood('neutral');
-  document.getElementById('timer').textContent = `เวลาที่เหลือ: ${TIME_LIMIT} วินาที`;
+  document.getElementById('timer').textContent = `${TIME_LIMIT}`;
   document.getElementById('next').style.display = 'none';
   enableChoiceButtons();
 
@@ -148,7 +148,7 @@ function startTimer() {
   bar.style.width = '100%';
   timer = setInterval(() => {
     timeLeft--;
-    document.getElementById('timer').textContent = `เวลาที่เหลือ: ${timeLeft} วินาที`;
+    document.getElementById('timer').textContent = `${timeLeft}`;
     bar.style.width = ((timeLeft / TIME_LIMIT) * 100) + '%';
     if (timeLeft <= 0) {
       clearInterval(timer);

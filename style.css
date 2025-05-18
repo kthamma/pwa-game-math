@@ -188,7 +188,8 @@ h1 {
 
 /* Stylize the countdown timer */
 #timer {
-  font-size: 1.8rem;
+display: flex;
+  font-size: 1.2rem;
   font-weight: bold;
   color: #f57c00;
   text-align: center;
@@ -203,7 +204,7 @@ h1 {
 
 /* Stylize the score display */
 #score {
-  display: flex;
+  
   align-items: center;
   justify-content: center;
   font-size: 2rem;
@@ -285,6 +286,14 @@ h1 {
 
 /* Adjust score styling in header */
 #score {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0.6rem 1.2rem;
+}
+
+#timer {
   display: flex;
   align-items: center;
   justify-content: center;
