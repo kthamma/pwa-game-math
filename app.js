@@ -8,6 +8,7 @@ let timer;
 const TIME_LIMIT = 10;
 let correctAnswer = null;
 let score = 0;
+let questionCount = 0;
 
 function generateQuestion() {
   clearInterval(timer);
@@ -81,6 +82,7 @@ function generateQuestion() {
         ? 'ถูกต้อง!'
         : `ผิด! คำตอบคือ ${correctAnswer}`;
       updateScore(isCorrect ? 1 : -1);
+      updateQuestionCount();
       document.getElementById('next').style.display = 'inline-block';
     };
     choicesDiv.appendChild(btn);
@@ -106,6 +108,7 @@ function startTimer() {
       resultDiv.className = 'timeout';
       resultDiv.textContent = `หมดเวลา! คำตอบคือ ${correctAnswer}`;
       updateScore(-1);
+      updateQuestionCount();
       document.getElementById('next').style.display = 'inline-block';
     }
   }, 1000);
@@ -114,12 +117,26 @@ function startTimer() {
 function updateScore(delta) {
   score += delta;
   document.getElementById('score').textContent = `คะแนน: ${score}`;
+  const scoreBox = document.getElementById('score');
+  if (score < 0) {
+    scoreBox.style.backgroundColor = '#ffcdd2';
+    scoreBox.style.color = '#c62828';
+  } else {
+    scoreBox.style.backgroundColor = '#dcedc8';
+    scoreBox.style.color = '#1b5e20';
+  }
   const stars = Math.floor(score / 10);
   document.getElementById('stars').textContent = '⭐'.repeat(Math.max(0, stars));
 }
 
 function nextQuestion() {
-  generateQuestion();
+    
+function updateQuestionCount() {
+  questionCount++;
+  document.getElementById('question-count').textContent = `ข้อที่ทำ: ${questionCount}`;
+}
+
+generateQuestion();
 }
 
 function shuffle(arr) {
@@ -137,6 +154,12 @@ function disableChoiceButtons() {
 function enableChoiceButtons() {
   const buttons = document.querySelectorAll('#choices button');
   buttons.forEach(btn => btn.disabled = false);
+}
+
+  
+function updateQuestionCount() {
+  questionCount++;
+  document.getElementById('question-count').textContent = `ข้อที่ทำ: ${questionCount}`;
 }
 
 generateQuestion();

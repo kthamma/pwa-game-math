@@ -228,3 +228,35 @@ h1 {
   text-align: center;
   transition: background-color 0.3s ease, color 0.3s ease;
 }
+
+
+/* Enlarged and animated stars */
+#stars {
+  font-size: 2.8rem;
+  color: gold;
+  text-align: center;
+  margin-top: 0.5rem;
+  animation: popStars 1s ease-in-out;
+}
+
+@keyframes popStars {
+  0% { transform: scale(1); opacity: 0.6; }
+  50% { transform: scale(1.4); opacity: 1; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+
+/* Increase star size */
+#stars {
+  font-size: 3.5rem !important;
+}
+
+
+/* Question count styling */
+#question-count {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #424242;
+  text-align: center;
+  margin: 0.5rem auto;
+}
