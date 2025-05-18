@@ -291,3 +291,10 @@ h1 {
   margin: 0;
   padding: 0.6rem 1.2rem;
 }
+
+
+/* Ensure buttons accommodate Thai word lengths */
+#choices button {
+  white-space: normal;
+  line-height: 1.2;
+}
