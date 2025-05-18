@@ -1,3 +1,8 @@
+const correctSound = new Audio('https://cdn.pixabay.com/download/audio/2022/03/15/audio_1b0a31c6d7.mp3');
+const wrongSound = new Audio('https://cdn.pixabay.com/download/audio/2022/03/15/audio_d5be23e57a.mp3');
+let isMuted = false;
+
+const timeupSound = new Audio('https://cdn.pixabay.com/download/audio/2022/03/15/audio_fcccbced5f.mp3');
 
 let timer;
 const TIME_LIMIT = 10;
@@ -6,7 +11,9 @@ let score = 0;
 
 function generateQuestion() {
   clearInterval(timer);
-  document.getElementById('result').textContent = '';
+  const resultDiv = document.getElementById('result');
+  resultDiv.textContent = '';
+  resultDiv.className = '';
   showCharacterMood('neutral');
   document.getElementById('timer').textContent = `เวลาที่เหลือ: ${TIME_LIMIT} วินาที`;
   document.getElementById('next').style.display = 'none';
@@ -51,7 +58,7 @@ function generateQuestion() {
   document.getElementById('question').textContent = displayQuestion;
 
   const choices = [correctAnswer];
-  while (choices.length < 5) {
+  while (choices.length < 6) {
     let wrong = correctAnswer + Math.floor(Math.random() * 21) - 10;
     if (!choices.includes(wrong) && wrong >= 0) choices.push(wrong);
   }
@@ -66,8 +73,11 @@ function generateQuestion() {
       clearInterval(timer);
       disableChoiceButtons();
       const isCorrect = choice === correctAnswer;
+      if (isCorrect) playSound(correctSound); else playSound(wrongSound);
       showCharacterMood(isCorrect ? 'correct' : 'wrong');
-      document.getElementById('result').textContent = isCorrect
+      const resultDiv = document.getElementById('result');
+      resultDiv.className = isCorrect ? 'correct' : 'wrong';
+      resultDiv.textContent = isCorrect
         ? 'ถูกต้อง!'
         : `ผิด! คำตอบคือ ${correctAnswer}`;
       updateScore(isCorrect ? 1 : -1);
@@ -90,8 +100,11 @@ function startTimer() {
     if (timeLeft <= 0) {
       clearInterval(timer);
       disableChoiceButtons();
-            showCharacterMood('wrong');
-      document.getElementById('result').textContent = `หมดเวลา! คำตอบคือ ${correctAnswer}`;
+      playSound(timeupSound);
+      showCharacterMood('wrong');
+      const resultDiv = document.getElementById('result');
+      resultDiv.className = 'timeout';
+      resultDiv.textContent = `หมดเวลา! คำตอบคือ ${correctAnswer}`;
       updateScore(-1);
       document.getElementById('next').style.display = 'inline-block';
     }
@@ -137,5 +150,17 @@ function showCharacterMood(state) {
     img.src = 'images/sad.png';
   } else {
     img.src = 'images/neutral.png';
+  }
+}
+
+
+function toggleMute() {
+  isMuted = !isMuted;
+  document.getElementById('mute-toggle').textContent = isMuted ? '🔇 ปิดเสียง' : '🔊 เปิดเสียง';
+}
+
+function playSound(audio) {
+  if (!isMuted) {
+    audio.play();
   }
 }

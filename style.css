@@ -20,12 +20,16 @@ h1 {
   padding: 1rem 2rem;
 }
 
-
+#result {
+  font-size: 1.2rem;
+  margin-top: 1rem;
+  min-height: 1.2rem;
+}
 
 #progress-container {
   width: 100%;
   height: 20px;
-  
+  background-color: #ccc;
   border-radius: 10px;
   overflow: hidden;
   margin: 1rem 0;
@@ -34,16 +38,12 @@ h1 {
 #progress-bar {
   height: 100%;
   width: 100%;
-  
+  background-color: #66bb6a;
   transition: width 1s linear;
 }
 
 
-#stars {
-  font-size: 2.5rem;
-  margin-top: 0.5rem;
-}
-
+/* Responsive button update */
 
 #choices {
   display: flex;
@@ -53,113 +53,6 @@ h1 {
   margin: 1rem 0;
 }
 
-#choices button {
-  font-size: 2rem;
-  padding: 1.2rem 2rem;
-  min-width: 120px;
-  border-radius: 12px;
-  border: none;
-  
-  color: #333;
-  cursor: pointer;
-  transition: background 0.2s ease;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-}
-
-#choices button:hover {
-  
-}
-
-#next {
-  font-size: 1.5rem;
-  padding: 0.8rem 1.5rem;
-  
-  border-radius: 10px;
-  border: none;
-  cursor: pointer;
-  margin-top: 1rem;
-}
-
-@media (max-width: 600px) {
-  #choices button {
-    font-size: 1.6rem;
-    padding: 1rem;
-    min-width: 100px;
-  }
-
-  #next {
-    font-size: 1.2rem;
-    padding: 0.6rem 1rem;
-  }
-}
-
-
-#question {
-  font-size: 2.4rem;
-  font-weight: bold;
-  color: #1565c0;
-  
-  padding: 1rem 1.5rem;
-  border-radius: 12px;
-  display: inline-block;
-  margin: 1.5rem 0;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-}
-
-
-
-
-
-
-
-
-
-#timer {
-  font-size: 1.8rem;
-  font-weight: bold;
-  color: #f57c00;
-  margin-bottom: 0.5rem;
-}
-
-
-/* Strengthened styles with specificity and !important */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-#result {
-  font-size: 2rem;
-  padding: 1.5rem;
-  font-weight: bold;
-  text-align: center;
-  min-height: 2.5rem;
-}
-
-
-
-
-#result {
-  font-size: 2rem;
-  padding: 1.5rem;
-  font-weight: bold;
-  text-align: center;
-  min-height: 2.5rem;
-}
-
-
-
-/* Restore button styles */
 #choices button {
   font-size: 2rem;
   padding: 1.2rem 2rem;
@@ -187,48 +80,151 @@ h1 {
   margin-top: 1rem;
 }
 
-/* Restore progress bar styles */
-#progress-container {
-  width: 100%;
-  height: 20px;
-  background-color: #ccc;
+@media (max-width: 600px) {
+  #choices button {
+    font-size: 1.6rem;
+    padding: 1rem;
+    min-width: 100px;
+  }
+
+  #next {
+    font-size: 1.2rem;
+    padding: 0.6rem 1rem;
+  }
+}
+
+
+#question {
+  font-size: 2.2rem;
+  font-weight: bold;
+  color: #1e88e5;
+  margin: 1.5rem 0;
+}
+
+#result {
+  font-size: 1.6rem;
+  padding: 1rem;
+  min-height: 2rem;
+}
+
+#result.correct {
+  color: #2e7d32;
+  background: #c8e6c9;
   border-radius: 10px;
-  overflow: hidden;
-  margin: 1rem 0;
 }
 
-#progress-bar {
-  height: 100%;
-  width: 100%;
-  background-color: #66bb6a;
-  transition: width 1s linear;
+#result.wrong {
+  color: #c62828;
+  background: #ffcdd2;
+  border-radius: 10px;
+}
+
+#result.timeout {
+  color: #ef6c00;
+  background: #ffe0b2;
+  border-radius: 10px;
+}
+
+#mute-toggle {
+  font-size: 1.2rem;
+  padding: 0.3rem 0.7rem;
+  margin-bottom: 1rem;
+  cursor: pointer;
+  border-radius: 8px;
+  border: none;
+  background: #eeeeee;
 }
 
 
+#choices {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.8rem;
+  margin: 1rem auto;
+  max-width: 90vw;
+}
+
+#choices button {
+  font-size: 1.6rem;
+  padding: 1rem;
+  min-width: 100px;
+  flex: 1 1 calc(33% - 1rem); /* show up to 3 per row on large screens */
+  max-width: 150px;
+}
+
+@media (max-width: 600px) {
+  #choices button {
+    font-size: 1.4rem;
+    padding: 0.8rem;
+    flex: 1 1 calc(45% - 1rem); /* show 2 rows with 3 buttons per row on mobile */
+  }
+}
+
+
+#choices button {
+  flex: 1 1 calc(33.333% - 1rem); /* always 3 per row, across all devices */
+  max-width: 33.333%;
+  box-sizing: border-box;
+}
+
+
+/* Force 2 buttons per row layout for 6 choices */
+#choices button {
+  flex: 1 1 calc(50% - 1rem); /* 2 per row */
+  max-width: 50%;
+  box-sizing: border-box;
+}
+
+
+/* Force 3 buttons per row layout for 6 choices */
+#choices button {
+  flex: 1 1 calc(33.333% - 1rem); /* 3 per row */
+  max-width: 33.333%;
+  box-sizing: border-box;
+}
+
+
+/* Stylize the question display */
+#question {
+  font-size: 2.4rem;
+  font-weight: bold;
+  color: #1565c0;
+  background-color: #e3f2fd;
+  padding: 1rem 1.5rem;
+  border-radius: 12px;
+  text-align: center;
+  margin: 1rem auto;
+  max-width: 90%;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* Stylize the countdown timer */
+#timer {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #f57c00;
+  text-align: center;
+  margin-bottom: 0.5rem;
+  background-color: #fff3e0;
+  padding: 0.4rem 1rem;
+  border-radius: 8px;
+  display: inline-block;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+
+/* Stylize the score display */
 #score {
   font-size: 2rem;
   font-weight: bold;
   color: #1b5e20;
   background-color: #dcedc8;
-  padding: 0.6rem 1.2rem;
-  border-radius: 10px;
+  padding: 0.6rem 1.5rem;
+  border-radius: 12px;
   display: inline-block;
-  margin-top: 0.5rem;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
-
-
-#score {
-  display: block;
-  text-align: center;
   margin: 1rem auto 0.5rem auto;
-}
-
-
-#version {
-  font-size: 0.9rem;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
   text-align: center;
-  margin-top: 0.5rem;
-  color: #666;
-  font-style: italic;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
